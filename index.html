@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+        <section>
+            <p>Digite o ano de nascimento
+                <input type="number" name="txtnas" id="txtnas">
+            </p>
+            <p>Sexo:
+                <input type="radio" name="radsex" id="radfem" checked>
+                <label for="radfem">Feminino</label>
+                <input type="radio" name="radsex" id="radmas">
+                <label for="radmas">Masculino</label>
+            </p>
+            <input type="button" value="Procurar" onclick="procurar()">
+            <p id="texto">Aguardando...
+            </p>
+            <div id="img-container"><img src="" alt="" id="foto"></div>
+        </section>
+
+        <script>
+
+            function procurar(){
+                var txtNascimento = document.querySelector('#txtnas')
+                var nascimento = Number(txtNascimento.value)
+                var agora = new Date()
+                var anoAtual = agora.getFullYear()
+                var texto = document.querySelector('#texto')
+                var sexo = document.getElementsByName('radsex')
+                var idade = anoAtual - nascimento
+                var foto = document.querySelector('#foto')
+              
+                if (nascimento > anoAtual){
+                    alert('[ERRO] Preencha os dados corretamente')
+                }
+                else{
+
+                    if(sexo[0].checked){
+                    // FEMININO
+                        if(idade >=0 && idade <= 12){
+                            texto.innerHTML = `Uma menina de ${idade} anos`
+                            foto.src = 'img/crianca-f.jpg'
+                        }
+                        else if(idade >= 13 && idade <= 20){
+                            texto.innerHTML = `Uma garota de ${idade} anos`
+                            foto.src = 'img/jovem-f.jpg'
+                        }
+                        else if(idade <= 60){
+                            texto.innerHTML = `Uma mulher de ${idade} anos`
+                            foto.src = 'img/adulto-f.jpg'
+                        }
+                        else if(idade >= 61){
+                            texto.innerHTML = `Uma senhora de ${idade} anos`
+                            foto.src = 'img/idoso-f.jpg'
+                        }
+                    }
+                    else if(sexo[1].checked){
+                    // MASCULINO
+                    if(idade >=0 && idade <= 12){
+                            texto.innerHTML = `Um menino de ${idade} anos`
+                            foto.src = 'img/crianca-m.jpg'
+                        }
+                        else if(idade >= 13 && idade <= 20){
+                            texto.innerHTML = `Um garoto de ${idade} anos`
+                            foto.src = 'img/jovem-m.jpg'
+                        }
+                        else if(idade <= 60){
+                            texto.innerHTML = `Um homem de ${idade} anos`
+                            foto.src = 'img/adulto-m.jpg'
+                        }
+                        else if(idade >= 61){
+                            texto.innerHTML = `Um senhor de ${idade} anos`
+                            foto.src = 'img/idoso-m.jpg'
+                        }
+                    }
+
+                }
+                texto.style.textAlign = 'center'
+            
+                
+                
+            }
+
+        </script>
+</body>
+</html>

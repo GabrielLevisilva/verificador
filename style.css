@@ -1,0 +1,20 @@
+*{
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+
+}
+body{
+    background-color: dodgerblue;
+}
+section{
+    background-color: white;
+    padding: 20px;
+    font-size: 1.3em;
+}
+#img-container{
+    text-align: center;
+}
+img{
+    border-radius: 50%;
+    width: 300px;
+    
+}
